@@ -1,7 +1,0 @@
-
-mamama help
-touch
-man
-vi
-
-ACPIRECURSIVE.tex
