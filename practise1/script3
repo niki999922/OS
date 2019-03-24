@@ -1,0 +1,10 @@
+#!/bin/bash
+
+answer=""
+str=""
+while [[ $str != q ]]
+do
+read str
+ans="$ans$str"
+done
+echo "$ans"

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read str
+let scrore=1
+let tmp=$str%2;
+while [[ $tmp -eq 1 ]]
+do
+let score=$score+1	
+read str
+let tmp=$str%2;
+done
+let score=$score+1
+echo "$score"

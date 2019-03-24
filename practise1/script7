@@ -1,0 +1,11 @@
+#!/bin/bash
+
+max=$1
+for number in $@
+do
+	if [[ $max -lt $number ]] 
+	then
+		let max=$number
+	fi
+done
+echo $max
