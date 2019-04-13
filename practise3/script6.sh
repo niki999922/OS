@@ -1,15 +1,13 @@
 #!/bin/bash
 
-strtempp=""
-
-#./script5.sh
+./script5.sh
 tmp=""
 while read str
 do
 	ppid=$(echo "$str" | grep -E -h -s -i -o "Parent_ProcessID=[0-9]+" | grep -o "[0-9]\+")
-	tmp=$tmp$ppid$'\n'
-done < out5.txt
-echo "$tmp" | uniq -c  | grep -E -o "[0-9]+" > count.txt
+	echo $ppid
+done < out5.txt |
+uniq -c  | grep -E -o "[0-9]+" > count.txt
 tmp=""
 previousid=0
 sum=0
@@ -30,12 +28,10 @@ do
 		fi
 		let cur=$((cur + 1))
 		let sum=$((sum / cnt))			
-		tmp=$tmp"Average_Sleeping_Children_of_ParentID=$previousid is $sum"$'\n'
+		echo "Average_Sleeping_Children_of_ParentID=$previousid is $sum"
 		sum=$avgt
 	fi
 	previousid=$ppid
-	tmp=$tmp$str$'\n'
-done < out5.txt
-echo "$tmp" > out6.txt
-cat out6.txt
+	echo $str
+done < out5.txt > out6.txt
 rm count.txt

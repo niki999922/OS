@@ -6,7 +6,6 @@
 status=""
 for pid in $(ps -A -o pid| tail -n +2)
 do
-	#f="/proc/"$pid"/status"
 	f="/proc/"$pid
 	ppid=$(grep -E -h -s -i "ppid:\s+(.+)" $f"/status" | grep -o "[0-9]\+")
 	sleepavg=$(grep -E -h -s -i "se.avg.util_sum(.+):\s+(.+)" $f/sched | grep -o "[0-9]\+")	
@@ -18,7 +17,6 @@ do
 	then
 		sleepavg=0
 	fi
-	status=$status"ProcessID="$pid" : Parent_ProcessID="$ppid" : Average_sleeping_Time="$sleepavg$'\n'	
-done
-echo "$status" | sort -t " " -k 3 > out5.txt
-cat out5.txt
+	echo "ProcessID="$pid" : Parent_ProcessID="$ppid" : Average_sleeping_Time="$sleepavg	
+done |
+sort -t " " -k 3 > out5.txt
