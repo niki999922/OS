@@ -1,0 +1,1 @@
+xcopy /Z C:\Users\Nikita\OS\practise6\task2\myFile.txt \\%computername%\Users\Nikita\OS\practise6\task2\temp\
